@@ -1,0 +1,7 @@
+deployment1:
+  replicaCount: 2
+  image: nginx:1.14.2
+
+deployment2:
+  replicaCount: 1
+  image: mysql:8.0

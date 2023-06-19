@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment2
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "2"
+spec:
+  replicas: {{ .Values.deployment2.replicaCount }}
+  selector:
+    matchLabels:
+      app: deployment2
+  template:
+    metadata:
+      labels:
+        app: deployment2
+    spec:
+      containers:
+        - name: deployment2
+          image: {{ .Values.deployment2.image }}
+          ports:
+            - containerPort: 3306
